@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SqlLiteExample.Views.ListPage">
+
+    <ContentPage.ToolbarItems>
+         <ToolbarItem Text="Refresh" Clicked="OnRefreshMenu" Order="Secondary" Priority="1"/>
+        <ToolbarItem Text="Add" Clicked="OnInsertMenu" Order="Secondary" Priority="1"/>
+        <ToolbarItem Text="List"   Order="Secondary" Priority="2"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="lstStudents" ItemsSource="{Binding .}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell  Text="{Binding Name}" Detail="{Binding Surname}" >
+                            <TextCell.ContextActions>
+                                <MenuItem CommandParameter="{Binding Id}" Text="Delete" IsDestructive="True" Clicked="OnMenuDelete"></MenuItem>
+                                <MenuItem CommandParameter="{Binding Id}" Text="Detail" IsDestructive="False" Clicked="OnDetailMenu"/>
+                            </TextCell.ContextActions>
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
